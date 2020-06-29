@@ -2,7 +2,8 @@ const express = require("express")
 const bodyParser = require("body-parser")
 
 const app = express();
-var tasks=["Start Online lecture","Have food","Create wireframe for the project"];
+let tasks=["Start Online lecture","Have food","Create wireframe for the project"];
+let works =[];
 
 app.use(express.static("public"))
 app.set('view engine', "ejs")
@@ -19,15 +20,26 @@ app.get("/", function(req, res) {
 
 
   res.render("list", {
-    dayName: day,
+    list: day,
     task:tasks
   })
 })
+app.get("/work",function(req,res){
+  res.render("list",{list:"Work",task:works})
+})
+
 
 app.post("/",function(req,res){
   var taskToDo=req.body.task
-  tasks.push(taskToDo);
-  res.redirect("/")
+  if(req.body.button ==="Work"){
+    works.push(taskToDo)
+    res.redirect("/work")
+  }else{
+    tasks.push(taskToDo);
+    res.redirect("/")
+  }
+  
+
 })
 
 app.listen(3000, function() {

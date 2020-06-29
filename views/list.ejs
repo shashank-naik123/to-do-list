@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Today</title>
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
+  <%- include("header") -%>
     <div class="box" id="heading">
-      <h1> <%=dayName%> </h1>
+      <h1> <%=list%> </h1>
     </div>
 
     <div class="box">
@@ -22,12 +15,10 @@
 
           <form  action="/" method="post">
             <input type="text" name="task" value="" placeholder="Add new task">
-            <button type="submit" name="button">+</button>
+            <button type="submit" name="button" value="<%=list %>">+</button>
           </form>
 
 
     </div>
 
-
-  </body>
-</html>
+  <%- include("footer") -%>
